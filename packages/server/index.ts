@@ -10,10 +10,6 @@ const app = express();
 // middlewares
 app.use(cors());
 app.use(express.json());
-app.use((req, res, next) => {
-  console.log("Hello from middleware...");
-  next();
-});
 
 // routes
 app.use("/api/chat", router);
