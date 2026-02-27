@@ -1,6 +1,14 @@
 import express from "express";
 const router = express.Router();
-import { getResponse, helloWorld } from "../controllers/aiChatBot.controller";
+import { chatController } from "../controllers/chat.controller";
+router
+  .route("/")
+  .post(chatController.getResponse)
+  .get(chatController.helloWorld);
 
-router.route("/").post(getResponse).get(helloWorld);
+router
+  .route("/:conversationId")
+  .get(chatController.getConversation)
+  .delete(chatController.clearConversation);
+
 export default router;
