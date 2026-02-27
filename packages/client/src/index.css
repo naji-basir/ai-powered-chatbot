@@ -1,10 +1,33 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-quicksand: Quicksand, sans-serif;
+}
+
 body {
   font-family: "Quicksand";
+}
+
+/* Colors using CSS variables */
+:root {
+  --bg-color: white;
+  --text-color: black;
+}
+
+.dark {
+  --bg-color: #111827;
+  --text-color: #f3f4f6;
+}
+
+/* Respect system preference for system mode */
+html[data-theme="system"] {
+  color-scheme: light dark;
 }
 
 @theme inline {
