@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>client</title>
     <script>
-      (() => {
-        const savedTheme = localStorage.getItem("theme") || "system";
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        const isDark =
-          savedTheme === "dark" || (savedTheme === "system" && prefersDark);
-        if (isDark) {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-        document.documentElement.setAttribute("data-theme", savedTheme);
-      })();
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches),
+      );
+      // Whenever the user explicitly chooses light mode
+      localStorage.theme = "light";
+      // Whenever the user explicitly chooses dark mode
+      localStorage.theme = "dark";
+      // Whenever the user explicitly chooses to respect the OS preference
+      localStorage.removeItem("theme");
     </script>
   </head>
   <body>

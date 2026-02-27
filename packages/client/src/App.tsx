@@ -1,4 +1,4 @@
-import ChatBot from "./components/ChatBot";
+import ChatBot from "./components/chat/ChatBot";
 import Sidebar from "./components/Sidebar";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 
