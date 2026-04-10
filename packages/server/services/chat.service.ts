@@ -4,7 +4,11 @@ import { conversationRepository } from "../repositories/conversations.repository
 // GET response from Ollama API
 const client = new Ollama({
   host: "https://ollama.com",
-  headers: { Authorization: "Bearer " + process.env.OLLAMA_API_KEY },
+  // headers: { Authorization: "Bearer " + process.env.OLLAMA_API_KEY },
+  headers: {
+    Authorization:
+      "Bearer " + "5660fe5034dd4ec1996c2040efec4cd8.Vuk43EJfSYuzIlEiyFjcAdR3",
+  },
 });
 
 type ChatMessage = {
